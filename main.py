@@ -17,6 +17,19 @@ import time
 
 # print(snail(mat))
 
+def show(fun1,fun2):
+    def check_work_time(s):
+        init_time = time.time()
+        fun1(s)
+        first= time.time()-init_time
+        init_time=time.time()
+        fun2(s)
+        second = time.time() - init_time
+        print(f"{fun1.__name__} " if first < second else f"{fun2.__name__}")
+    return check_work_time
+
+
+
 s = 'AaabBB'
 initial_time = time.time()
 import string
@@ -37,3 +50,6 @@ def c_d(s):
 initial_time = time.time()
 c_d(s)
 print(time.time()-initial_time)
+
+sho = show(count_dublicates,c_d)
+sho("aASdsajcnklcsanklclkdsnckjldsnklxznmcdskmcklanklcdslca"*1000000)
